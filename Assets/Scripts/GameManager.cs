@@ -6,28 +6,24 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static bool DND = false;
+
     public Sprite[] cardFace;
     public Sprite cardBack;
     public GameObject[] cards;
-    public Text matchText;
+    public Text scoreText;
 
-    private bool _init = false;
-    private int _matches = 8;
-
-	// Use this for initialization
-	void Start () {
-		
+    private int _matches = 0;
+    
+	void Start ()
+    {
+		initializeCards();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if(!_init)
-        {
-            initializeCards();
-        }
-
-        if(Input.GetMouseButton(0))
+        if(Input.GetMouseButton(0) && !DND)
         {
             checkCards();
         }
@@ -37,28 +33,25 @@ public class GameManager : MonoBehaviour
     {
         for(int i = 0; i < 2; i++)
         {
-            for(int j = 1; j < 9; j++)
+            for(int j = 0; j < cards.Length; j++)
             {
                 bool test = false;
                 int choice = 0;
                 while(!test)
                 {
                     choice = Random.Range(0, cards.Length);
-                    test = !(cards[choice].GetComponent<Card>().initialized);
+                    test = !(cards[choice].GetComponent<Card>().Initialized);
                 }
-                cards[choice].GetComponent<Card>().cardValue = j;
-                cards[choice].GetComponent<Card>().initialized = true;
+                cards[choice].GetComponent<Card>().CardValue = j;
+                cards[choice].GetComponent<Card>().Initialized = true;
             }
         }
         foreach(GameObject c in cards)
         {
             c.GetComponent<Card>().setupGraphics();
         }
-        if(!_init)
-        {
-            _init = true;
-        }
     }
+
     public Sprite getCardBack()
     {
         return cardBack;
@@ -66,7 +59,7 @@ public class GameManager : MonoBehaviour
 
     public Sprite getCardFace(int i)
     {
-        return cardFace[i - 1];
+        return cardFace[i];
     }
 
     void checkCards()
@@ -75,7 +68,7 @@ public class GameManager : MonoBehaviour
 
         for(int i = 0; i < cards.Length; i++)
         {
-            if(cards[i].GetComponent<Card>().state == 1)
+            if(cards[i].GetComponent<Card>().State == 1)
             {
                 c.Add(i);
             }
@@ -88,15 +81,15 @@ public class GameManager : MonoBehaviour
 
     void cardComparison(List<int> c)
     {
-        Card.DND = true;
+        DND = true;
 
         int x = 0;
 
-        if(cards[c[0]].GetComponent<Card>().cardValue == cards[c[1]].GetComponent<Card>().cardValue)
+        if(cards[c[0]].GetComponent<Card>().CardValue == cards[c[1]].GetComponent<Card>().CardValue)
         {
-            x = 2;
-            _matches--;
-            if(_matches == 0)
+            x = 1;
+            _matches++;
+            if(_matches == 8)
             {
                 SceneManager.LoadScene("MainMenu");
             }
@@ -104,8 +97,18 @@ public class GameManager : MonoBehaviour
 
         for(int i = 0; i < c.Count; i++)
         {
-            cards[c[i]].GetComponent<Card>().state = x;
-            cards[c[i]].GetComponent<Card>().falseCheck();
+            cards[c[i]].GetComponent<Card>().State = x;
         }
+        StartCoroutine(pause());
+    }
+
+    IEnumerator pause()
+    {
+        yield return new WaitForSeconds(1);
+        for(int i = 0; i < cards.Length; i++)
+        {
+            cards[i].GetComponent<Card>().setGraphics();
+        }
+        DND = false;
     }
 }

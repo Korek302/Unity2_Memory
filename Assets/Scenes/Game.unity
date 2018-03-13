@@ -88,6 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -228,6 +229,11 @@ Prefab:
       propertyPath: m_Name
       value: ButtonCard (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 114699606056051530, guid: 05f5c572483f6594f8a381d1a1322ece,
+        type: 2}
+      propertyPath: Manager
+      value: 
+      objectReference: {fileID: 166686451}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05f5c572483f6594f8a381d1a1322ece, type: 2}
   m_IsPrefabParent: 0
@@ -338,6 +344,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114699606056051530, guid: 05f5c572483f6594f8a381d1a1322ece,
+        type: 2}
+      propertyPath: Manager
+      value: 
+      objectReference: {fileID: 166686451}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05f5c572483f6594f8a381d1a1322ece, type: 2}
   m_IsPrefabParent: 0
@@ -418,7 +429,7 @@ MonoBehaviour:
   - {fileID: 80313643}
   - {fileID: 1149753846}
   - {fileID: 313751388}
-  matchText: {fileID: 497062165}
+  scoreText: {fileID: 497062165}
 --- !u!1001 &313751386
 Prefab:
   m_ObjectHideFlags: 0
@@ -535,6 +546,11 @@ Prefab:
       propertyPath: m_Name
       value: ButtonCard (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 114699606056051530, guid: 05f5c572483f6594f8a381d1a1322ece,
+        type: 2}
+      propertyPath: Manager
+      value: 
+      objectReference: {fileID: 166686451}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05f5c572483f6594f8a381d1a1322ece, type: 2}
   m_IsPrefabParent: 0
@@ -634,7 +650,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 497062163}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 351.34998, y: 268.87915, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1289117616}
@@ -708,7 +724,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 692062470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0002746582, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1318290567}
@@ -868,6 +884,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.9996685
       objectReference: {fileID: 0}
+    - target: {fileID: 114699606056051530, guid: 05f5c572483f6594f8a381d1a1322ece,
+        type: 2}
+      propertyPath: Manager
+      value: 
+      objectReference: {fileID: 166686451}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05f5c572483f6594f8a381d1a1322ece, type: 2}
   m_IsPrefabParent: 0
@@ -997,6 +1018,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.9996685
       objectReference: {fileID: 0}
+    - target: {fileID: 114699606056051530, guid: 05f5c572483f6594f8a381d1a1322ece,
+        type: 2}
+      propertyPath: Manager
+      value: 
+      objectReference: {fileID: 166686451}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05f5c572483f6594f8a381d1a1322ece, type: 2}
   m_IsPrefabParent: 0
@@ -1126,6 +1152,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.9996685
       objectReference: {fileID: 0}
+    - target: {fileID: 114699606056051530, guid: 05f5c572483f6594f8a381d1a1322ece,
+        type: 2}
+      propertyPath: Manager
+      value: 
+      objectReference: {fileID: 166686451}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05f5c572483f6594f8a381d1a1322ece, type: 2}
   m_IsPrefabParent: 0
@@ -1255,6 +1286,11 @@ Prefab:
       propertyPath: m_Name
       value: ButtonCard (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 114699606056051530, guid: 05f5c572483f6594f8a381d1a1322ece,
+        type: 2}
+      propertyPath: Manager
+      value: 
+      objectReference: {fileID: 166686451}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05f5c572483f6594f8a381d1a1322ece, type: 2}
   m_IsPrefabParent: 0
@@ -1384,6 +1420,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.9996685
       objectReference: {fileID: 0}
+    - target: {fileID: 114699606056051530, guid: 05f5c572483f6594f8a381d1a1322ece,
+        type: 2}
+      propertyPath: Manager
+      value: 
+      objectReference: {fileID: 166686451}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05f5c572483f6594f8a381d1a1322ece, type: 2}
   m_IsPrefabParent: 0
@@ -1513,6 +1554,11 @@ Prefab:
       propertyPath: m_Name
       value: ButtonCard (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 114699606056051530, guid: 05f5c572483f6594f8a381d1a1322ece,
+        type: 2}
+      propertyPath: Manager
+      value: 
+      objectReference: {fileID: 166686451}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05f5c572483f6594f8a381d1a1322ece, type: 2}
   m_IsPrefabParent: 0
@@ -1642,6 +1688,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.9996685
       objectReference: {fileID: 0}
+    - target: {fileID: 114699606056051530, guid: 05f5c572483f6594f8a381d1a1322ece,
+        type: 2}
+      propertyPath: Manager
+      value: 
+      objectReference: {fileID: 166686451}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05f5c572483f6594f8a381d1a1322ece, type: 2}
   m_IsPrefabParent: 0
@@ -1771,6 +1822,11 @@ Prefab:
       propertyPath: m_Name
       value: ButtonCard (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 114699606056051530, guid: 05f5c572483f6594f8a381d1a1322ece,
+        type: 2}
+      propertyPath: Manager
+      value: 
+      objectReference: {fileID: 166686451}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05f5c572483f6594f8a381d1a1322ece, type: 2}
   m_IsPrefabParent: 0
@@ -1951,19 +2007,19 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1318290563}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.0150249805, y: 0.0150249805, z: 0.0150249805}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 692062471}
   - {fileID: 1289117616}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1001 &1504047107
 Prefab:
   m_ObjectHideFlags: 0
@@ -2080,6 +2136,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.9996685
       objectReference: {fileID: 0}
+    - target: {fileID: 114699606056051530, guid: 05f5c572483f6594f8a381d1a1322ece,
+        type: 2}
+      propertyPath: Manager
+      value: 
+      objectReference: {fileID: 166686451}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05f5c572483f6594f8a381d1a1322ece, type: 2}
   m_IsPrefabParent: 0
@@ -2156,6 +2217,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -2274,6 +2336,11 @@ Prefab:
       propertyPath: m_Name
       value: ButtonCard (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114699606056051530, guid: 05f5c572483f6594f8a381d1a1322ece,
+        type: 2}
+      propertyPath: Manager
+      value: 
+      objectReference: {fileID: 166686451}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05f5c572483f6594f8a381d1a1322ece, type: 2}
   m_IsPrefabParent: 0
@@ -2403,6 +2470,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.9996685
       objectReference: {fileID: 0}
+    - target: {fileID: 114699606056051530, guid: 05f5c572483f6594f8a381d1a1322ece,
+        type: 2}
+      propertyPath: Manager
+      value: 
+      objectReference: {fileID: 166686451}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05f5c572483f6594f8a381d1a1322ece, type: 2}
   m_IsPrefabParent: 0
@@ -2532,6 +2604,11 @@ Prefab:
       propertyPath: m_Name
       value: ButtonCard (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 114699606056051530, guid: 05f5c572483f6594f8a381d1a1322ece,
+        type: 2}
+      propertyPath: Manager
+      value: 
+      objectReference: {fileID: 166686451}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05f5c572483f6594f8a381d1a1322ece, type: 2}
   m_IsPrefabParent: 0
@@ -2661,6 +2738,11 @@ Prefab:
       propertyPath: m_Name
       value: ButtonCard (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 114699606056051530, guid: 05f5c572483f6594f8a381d1a1322ece,
+        type: 2}
+      propertyPath: Manager
+      value: 
+      objectReference: {fileID: 166686451}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05f5c572483f6594f8a381d1a1322ece, type: 2}
   m_IsPrefabParent: 0
