@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static bool DND = false;
+    //public static bool DND = false;
 
     public Sprite[] cardFace;
     public Sprite cardBack;
@@ -19,21 +19,12 @@ public class GameManager : MonoBehaviour
     {
 		initializeCards();
 	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        if(Input.GetMouseButton(0) && !DND)
-        {
-            checkCards();
-        }
-	}
 
     void initializeCards()
     {
         for(int i = 0; i < 2; i++)
         {
-            for(int j = 0; j < cards.Length; j++)
+            for(int j = 0; j < cards.Length/2; j++)
             {
                 bool test = false;
                 int choice = 0;
@@ -62,9 +53,10 @@ public class GameManager : MonoBehaviour
         return cardFace[i];
     }
 
-    void checkCards()
+    public void CheckCards()
     {
         List<int> c = new List<int>();
+
 
         for(int i = 0; i < cards.Length; i++)
         {
@@ -75,40 +67,29 @@ public class GameManager : MonoBehaviour
             if(c.Count == 2)
             {
                 cardComparison(c);
+                break;
             }
         }
     }
 
     void cardComparison(List<int> c)
     {
-        DND = true;
-
-        int x = 0;
-
         if(cards[c[0]].GetComponent<Card>().CardValue == cards[c[1]].GetComponent<Card>().CardValue)
         {
-            x = 1;
             _matches++;
             if(_matches == 8)
             {
                 SceneManager.LoadScene("MainMenu");
             }
+            cards[c[0]].GetComponent<Card>().State = 2;
+            cards[c[1]].GetComponent<Card>().State = 2;
         }
-
-        for(int i = 0; i < c.Count; i++)
+        else
         {
-            cards[c[i]].GetComponent<Card>().State = x;
+            cards[c[0]].GetComponent<Card>().State = 0;
+            cards[c[1]].GetComponent<Card>().State = 0;
         }
-        StartCoroutine(pause());
-    }
-
-    IEnumerator pause()
-    {
-        yield return new WaitForSeconds(1);
-        for(int i = 0; i < cards.Length; i++)
-        {
-            cards[i].GetComponent<Card>().setGraphics();
-        }
-        DND = false;
+        cards[c[0]].GetComponent<Card>().updateGraphics();
+        cards[c[1]].GetComponent<Card>().updateGraphics();
     }
 }
