@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class Card : MonoBehaviour, IPointerClickHandler
 {
     public GameObject Manager;
-    public GameObject Container;
     public int State = 0;
     public int CardValue;
     public bool Initialized = false;
@@ -17,8 +16,8 @@ public class Card : MonoBehaviour, IPointerClickHandler
 
     public void setupGraphics()
     {
-        _cardBack = Manager.GetComponent<GameManager>().getCardBack();
-        _cardFront = Manager.GetComponent<GameManager>().getCardFace(CardValue);
+        _cardBack = Manager.GetComponent<GameManager>().cardBack;
+        _cardFront = Manager.GetComponent<GameManager>().cardFaces[CardValue];
 
         GetComponent<Image>().sprite = _cardBack;
     }
@@ -50,11 +49,11 @@ public class Card : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!Container.GetComponent<ValuesContener>().DND && State != 1)
+        if (!Manager.GetComponent<GameManager>().DND && State != 1)
         {
             flipCard();
-            Container.GetComponent<ValuesContener>().ClickedCounter++;
-            if (Container.GetComponent<ValuesContener>().ClickedCounter == 2)
+            Manager.GetComponent<GameManager>().ClickedCounter++;
+            if (Manager.GetComponent<GameManager>().ClickedCounter == 2)
             {
                 StartCoroutine(pause());
             }
@@ -63,10 +62,10 @@ public class Card : MonoBehaviour, IPointerClickHandler
 
     IEnumerator pause()
     {
-        Container.GetComponent<ValuesContener>().DND = true;
-        yield return new WaitForSeconds(3.0f);
+        Manager.GetComponent<GameManager>().DND = true;
+        yield return new WaitForSeconds(2.0f);
         Manager.GetComponent<GameManager>().CheckCards();
-        Container.GetComponent<ValuesContener>().ClickedCounter = 0;
-        Container.GetComponent<ValuesContener>().DND = false;
+        Manager.GetComponent<GameManager>().ClickedCounter = 0;
+        Manager.GetComponent<GameManager>().DND = false;
     }
 }
