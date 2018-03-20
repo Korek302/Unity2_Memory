@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -34,7 +33,7 @@ public class Card : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    public void flipCard()
+    void flipCard()
     {
         if (State == 0)
         {
@@ -49,7 +48,7 @@ public class Card : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!Manager.GetComponent<GameManager>().DND && State != 1)
+        if (!Manager.GetComponent<GameManager>().DND && State == 0)
         {
             flipCard();
             Manager.GetComponent<GameManager>().ClickedCounter++;

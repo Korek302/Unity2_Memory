@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -12,12 +10,16 @@ public class GameManager : MonoBehaviour
     public Sprite cardBack;
     public GameObject[] cards;
     public Text ScoreText;
+    public Text FinalScoreText;
+    public GameObject GamePanel;
+    public GameObject FinalPanel;
 
     private int _matches = 0;
     private int _score = 0;
     
 	void Start ()
     {
+        FinalPanel.gameObject.SetActive(false);
 		initializeCards();
 	}
 
@@ -28,19 +30,19 @@ public class GameManager : MonoBehaviour
             for(int j = 0; j < cards.Length/2; j++)
             {
                 bool _temp = false;
-                int choice = 0;
+                int _choice = 0;
                 while(!_temp)
                 {
-                    choice = Random.Range(0, cards.Length);
-                    _temp = !(cards[choice].GetComponent<Card>().Initialized);
+                    _choice = Random.Range(0, cards.Length);
+                    _temp = !(cards[_choice].GetComponent<Card>().Initialized);
                 }
-                cards[choice].GetComponent<Card>().CardValue = j;
-                cards[choice].GetComponent<Card>().Initialized = true;
+                cards[_choice].GetComponent<Card>().CardValue = j;
+                cards[_choice].GetComponent<Card>().Initialized = true;
             }
         }
-        foreach(GameObject c in cards)
+        foreach(GameObject card in cards)
         {
-            c.GetComponent<Card>().setupGraphics();
+            card.GetComponent<Card>().setupGraphics();
         }
     }
 
@@ -72,7 +74,9 @@ public class GameManager : MonoBehaviour
             _score += 10;
             if(_matches == 8)
             {
-                SceneManager.LoadScene("MainMenu");
+                FinalScoreText.text = "Your final score: " + _score;
+                GamePanel.gameObject.SetActive(false);
+                FinalPanel.gameObject.SetActive(true);
             }
             cards[toCompareList[0]].GetComponent<Card>().State = 2;
             cards[toCompareList[1]].GetComponent<Card>().State = 2;
