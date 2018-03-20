@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public bool DND = false;
     public int ClickedCounter = 0;
+    public int MatchSize = 2;
     public Sprite[] cardFaces;
     public Sprite cardBack;
     public GameObject[] cards;
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     private int _matches = 0;
     private int _score = 0;
+    private int _penalty = -2;
+    private int _prize = 10;
     
 	void Start ()
     {
@@ -25,9 +28,9 @@ public class GameManager : MonoBehaviour
 
     void initializeCards()
     {
-        for(int i = 0; i < 2; i++)
+        for(int i = 0; i < MatchSize; i++)
         {
-            for(int j = 0; j < cards.Length/2; j++)
+            for(int j = 0; j < cards.Length/MatchSize; j++)
             {
                 bool _temp = false;
                 int _choice = 0;
@@ -48,17 +51,17 @@ public class GameManager : MonoBehaviour
 
     public void CheckCards()
     {
-        int[] _toCompareList = new int[2];
         int _place = 0;
+        GameObject[] _toCompareList = new GameObject[MatchSize];
 
         for(int i = 0; i < cards.Length; i++)
         {
             if(cards[i].GetComponent<Card>().State == 1)
             {
-                _toCompareList[_place] = i;
+                _toCompareList[_place] = cards[i];
                 _place++;
             }
-            if(_place == 2)
+            if(_place == MatchSize)
             {
                 cardComparison(_toCompareList);
                 i = cards.Length;
@@ -66,30 +69,44 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void cardComparison(int[] toCompareList)
+    void cardComparison(GameObject[] toCompareList)
     {
-        if(cards[toCompareList[0]].GetComponent<Card>().CardValue == cards[toCompareList[1]].GetComponent<Card>().CardValue)
+        bool _allMatch = true;
+        for(int i = 0; i < toCompareList.Length - 1; i++)
+        {
+            if(toCompareList[i].GetComponent<Card>().CardValue != toCompareList[i + 1].GetComponent<Card>().CardValue)
+            {
+                _allMatch = false;
+            }
+        }
+        if(_allMatch)
         {
             _matches++;
-            _score += 10;
-            if(_matches == 8)
+            _score += _prize;
+            if(_matches == cards.Length/MatchSize)
             {
                 FinalScoreText.text = "Your final score: " + _score;
                 GamePanel.gameObject.SetActive(false);
                 FinalPanel.gameObject.SetActive(true);
             }
-            cards[toCompareList[0]].GetComponent<Card>().State = 2;
-            cards[toCompareList[1]].GetComponent<Card>().State = 2;
+            for(int i = 0; i < toCompareList.Length; i++)
+            {
+                toCompareList[i].GetComponent<Card>().State = 2;
+            }
         }
         else
         {
-            _score = _score < 1 ? _score : _score -= 2;
+            _score = _score < 1 ? _score : _score + _penalty;
 
-            cards[toCompareList[0]].GetComponent<Card>().State = 0;
-            cards[toCompareList[1]].GetComponent<Card>().State = 0;
+            for (int i = 0; i < toCompareList.Length; i++)
+            {
+                toCompareList[i].GetComponent<Card>().State = 0;
+            }
         }
         ScoreText.text = "Score: " + _score;
-        cards[toCompareList[0]].GetComponent<Card>().updateGraphics();
-        cards[toCompareList[1]].GetComponent<Card>().updateGraphics();
+        for (int i = 0; i < toCompareList.Length; i++)
+        {
+            toCompareList[i].GetComponent<Card>().updateGraphics();
+        }
     }
 }

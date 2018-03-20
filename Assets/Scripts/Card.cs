@@ -12,6 +12,7 @@ public class Card : MonoBehaviour, IPointerClickHandler
 
     private Sprite _cardBack;
     private Sprite _cardFront;
+    private float _waitTime = 1.0f;
 
     public void setupGraphics()
     {
@@ -52,7 +53,7 @@ public class Card : MonoBehaviour, IPointerClickHandler
         {
             flipCard();
             Manager.GetComponent<GameManager>().ClickedCounter++;
-            if (Manager.GetComponent<GameManager>().ClickedCounter == 2)
+            if (Manager.GetComponent<GameManager>().ClickedCounter == Manager.GetComponent<GameManager>().MatchSize)
             {
                 StartCoroutine(pause());
             }
@@ -62,7 +63,7 @@ public class Card : MonoBehaviour, IPointerClickHandler
     IEnumerator pause()
     {
         Manager.GetComponent<GameManager>().DND = true;
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(_waitTime);
         Manager.GetComponent<GameManager>().CheckCards();
         Manager.GetComponent<GameManager>().ClickedCounter = 0;
         Manager.GetComponent<GameManager>().DND = false;
